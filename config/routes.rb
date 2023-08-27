@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  
+  # PostcController
+  get'posts/new', to:'posts#new', as'new_post'
+  
 end
