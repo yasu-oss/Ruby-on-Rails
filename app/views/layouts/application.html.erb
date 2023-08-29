@@ -1,13 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Src</title>
+    <!-- titleを変更します -->
+    <title>SNS App</title>
+    <!-- Webページがモバイルデバイスやレスポンシブデザインをサポートするブラウザ上でどのように表示さ
+    れるべきかを制御します。 -->
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- CSRF Token 後の章で説明します -->
     <%= csrf_meta_tags %>
+    <!-- Railsの機能を使用してアプリケーションのセキュリティを向上させるための記述です -->
     <%= csp_meta_tag %>
+    <!-- Style追加 -->
+    <link rel="stylesheet"href="<%=mix('/css/app.css)'%>">
+    <!-- Javascript追加 -->
+     <script src="<%= mix('/js/bootstrap.js') %>"></script>
   </head>
 
+
   <body>
+    <!-- ここにコンテンツが挿入されます -->
+    <div class="main-container">
+      <!--  ナビゲーションバーの追加 -->
+      <nav class="custom-navbar">
+        <div id="menuToggle">
+          <input type="checkbox" />
+          <span></span>
+          <span></span>
+          <span></span>
+          <ul id="menu">
+            <li>
+              <a href="#">投稿一覧</a>
+            </li>
+            <li>
+              <a href="#">新規投稿</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- アラートメッセージの追加 -->
+      <% if notice %>
+        <div class="alert alert-success" role="alert">
+          <%= notice %>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-danger" role="alert">
+          <%= alert %>
+        </div>
+      <% end %>
+
+      <div class="bg-white text-dark">
     <%= yield %>
+      </div>
+    </div>
+  <!-- Javascript追加 -->
+  <script src="<%= mix('/js/app.js') %>"></script>
   </body>
 </html>
