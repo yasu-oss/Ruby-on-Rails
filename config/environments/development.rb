@@ -1,6 +1,10 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  
+  #2-8にて追加↓
+  config.action_mailer.default_url_options = { host: 'localhost', port: 8081 }
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # cloud9 host

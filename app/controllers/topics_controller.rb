@@ -14,5 +14,9 @@ class TopicsController < ApplicationController
   def update
     redirect_to'topics/edit'
   end
+  
+  def create
+    redirect_to new_topics_path#redirects to GET"/posts/new"
+  end
     
 end
