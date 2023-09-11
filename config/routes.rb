@@ -4,17 +4,23 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  
-  # PostcController
-  get'posts/new', to:'posts#new', as:'new_post'
-  get'posts/index', to:'posts#index', as:'index_posts'
-    # この行を追加
-  post 'posts/new', to: 'posts#create', as: 'create_post'
+  get '/', to: 'posts#index', as: 'index_post'
 
+  # PostsController
+  get 'posts/new', to: 'posts#new', as: 'new_post'
+  post 'posts/new', to: 'posts#create', as: 'create_post'
+  get 'posts/edit/:id', to: 'posts#edit', as: 'edit_post'
+  post 'posts/edit/:id', to: 'posts#update', as: 'update_post'
+  delete 'posts/destroy/:id', to: 'posts#destroy', as: 'destroy_post'
+
+  # CommentsController
+  get 'posts/show/:post_id/comments/new', to: 'comments#new', as: 'new_comment'
+  post 'posts/show/:post_id/comments/new', to: 'comments#create', as: 'create_comment'
+  
   # TopicsController
-  get'/topics/new', to:'topics#new' ,as:'new_topics'
-  get'/topics/edit', to:'topics#edit', as:'edit_topics'
-    #課題2-9
-  post 'topics/new', to:'topics#create', as:'create_topics'
-  post 'topics/edit', to:'topics#update', as:'update_topics'
+  get 'topics/new', to: 'topics#new', as: 'new_topic'
+  post '/topics/new', to: 'topics#create', as: 'create_topic'
+  get 'topics/edit/:id', to: 'topics#edit', as: 'edit_topic'
+  post '/topics/edit/:id', to: 'topics#update', as: 'update_topic'
+
 end
